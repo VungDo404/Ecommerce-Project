@@ -23,7 +23,151 @@
 	<!-- Login 12 - Bootstrap Brain Component -->
 	<link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-12/assets/css/login-12.css">
-
+	<!-- Chat popup -->
+	<style>
+		.chat-icon {
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background-color: transparent; /* Transparent background */
+			background-image: url('images/chatbot.png'); /* Path to chatbot.png */
+			background-size: 60%; /* Reduce the size of the image inside */
+			background-repeat: no-repeat; /* Prevent tiling */
+			background-position: center; /* Center the image within the icon */
+			border: none;
+			border-radius: 50%; /* Keep it circular */
+			width: 80px; /* Size of the chat icon */
+			height: 80px; /* Size of the chat icon */
+			cursor: pointer;
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
+		}
+		
+		
+		
+		/* Chat window styling */
+		.chat-popup {
+			position: fixed;
+			bottom: 90px;
+			right: 20px;
+			background: #fff;
+			width: 300px;
+			border: 1px solid #ddd;
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+			border-radius: 10px;
+			display: none;
+			z-index: 1000;
+		}
+		
+		.chat-popup .header {
+			background: #007bff;
+			color: white;
+			padding: 10px;
+			border-radius: 10px 10px 0 0;
+			text-align: center;
+			font-weight: bold;
+		}
+		
+		.chat-popup .body {
+			padding: 10px;
+			max-height: 200px;
+			overflow-y: auto;
+			font-size: 14px;
+		}
+		
+		.chat-popup .footer {
+			display: flex;
+			border-top: 1px solid #ddd;
+			padding: 10px;
+		}
+		
+		.chat-popup .footer input {
+			flex-grow: 1;
+			border: 1px solid #ddd;
+			border-radius: 5px;
+			padding: 5px;
+			margin-right: 5px;
+		}
+		
+		.chat-popup .footer button {
+			background: #007bff;
+			color: white;
+			border: none;
+			padding: 5px 10px;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+	.chat-icon {
+		position: fixed;
+		bottom: 20px;
+		right: 20px;
+		background-color: #007bff;
+		color: white;
+		border: none;
+		border-radius: 50%;
+		width: 100px;
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 24px;
+		cursor: pointer;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+	}
+	
+	/* Chat window styling */
+	.chat-popup {
+		position: fixed;
+		bottom: 90px;
+		right: 20px;
+		background: #fff;
+		width: 300px;
+		border: 1px solid #ddd;
+		box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+		border-radius: 10px;
+		display: none;
+		z-index: 1000;
+	}
+	
+	.chat-popup .header {
+		background: #007bff;
+		color: white;
+		padding: 10px;
+		border-radius: 10px 10px 0 0;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	.chat-popup .body {
+		padding: 10px;
+		max-height: 200px;
+		overflow-y: auto;
+		font-size: 14px;
+	}
+	
+	.chat-popup .footer {
+		display: flex;
+		border-top: 1px solid #ddd;
+		padding: 10px;
+	}
+	
+	.chat-popup .footer input {
+		flex-grow: 1;
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		padding: 5px;
+		margin-right: 5px;
+	}
+	
+	.chat-popup .footer button {
+		background: #007bff;
+		color: white;
+		border: none;
+		padding: 5px 10px;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	</style>
+	
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#header" tabindex="0">
@@ -1213,6 +1357,34 @@
 		crossorigin="anonymous"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/script.js"></script>
+<!-- Chat Icon -->
+<div class="chat-icon" onclick="toggleChat()"></div>
+
+
+<!-- Chat Pop-up -->
+<div class="chat-popup" id="chatPopup">
+    <div class="header">
+        BookSaw GPT-3 Chatbot
+    </div>
+    <div class="body">
+        <p>Welcome to BookSaw! How can we help you?</p>
+    </div>
+    <div class="footer">
+        <input type="text" placeholder="Type your message..." />
+        <button>Send</button>
+    </div>
+</div>
+<script>
+	function toggleChat() {
+		const chatPopup = document.getElementById('chatPopup');
+		if (chatPopup.style.display === 'block') {
+			chatPopup.style.display = 'none';
+		} else {
+			chatPopup.style.display = 'block';
+		}
+	}
+</script>
+
 
 </body>
 
